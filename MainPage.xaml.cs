@@ -7,6 +7,7 @@ using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -28,6 +29,9 @@ namespace UWPWeather
         public MainPage()
         {
             this.InitializeComponent();
+            ApplicationView.PreferredLaunchViewSize = new Size(432, 725);
+            ApplicationView.GetForCurrentView().SetPreferredMinSize(new Size(432, 725));
+            ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
         }
 
         [Obsolete]
@@ -42,15 +46,25 @@ namespace UWPWeather
             CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;
             TextInfo textInfo = cultureInfo.TextInfo;
 
-            ResultTextBlock.Text = myWeather.name + ", " + myWeather.sys.country +
-                " - Temperature(" + (Math.Round(myWeather.main.temp)).ToString() + " C) - " +
-                textInfo.ToTitleCase(myWeather.weather[0].description);
+            locationText.Text = myWeather.name + ", " + myWeather.sys.country;
+            temperatureText.Text = "Temperature ";
+            degrees.Text = (Math.Round(myWeather.main.temp)).ToString() + " C";
+            skyStatus.Text = textInfo.ToTitleCase(myWeather.weather[0].description);
             //string iconUrl = String.Format("http://openweathermap.org/img/wn/{0}@2x.png", myWeather.weather[0].icon);
 
             string iconUrl = String.Format("ms-appx:///Assets/Weather/{0}.png", myWeather.weather[0].icon);
 
 
             ResultImage.Source = new BitmapImage(new Uri(iconUrl, UriKind.Absolute));
+        }
+
+        private void FormName_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            if ((this.Width != 432) & (this.Height != 725))
+            {
+                this.Width = 432;
+                this.Height = 725;
+            }
         }
     }
 }

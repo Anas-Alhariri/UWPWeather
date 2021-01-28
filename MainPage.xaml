@@ -6,11 +6,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" RequestedTheme="Default">
 
-    <StackPanel Background="Gray">
-        <Button Content="Get Weather" Click="Button_Click" HorizontalAlignment="Center" Margin="0,50" FontSize="18" FontWeight="SemiBold" Background="PaleGoldenrod" Foreground="Black" CornerRadius="2"></Button>
-        <TextBlock Name="ResultTextBlock" HorizontalAlignment="Center" FontWeight="Bold" FontSize="18"/>
-        <Image Name="ResultImage" Width="200" Height="200"/>
+    <StackPanel Background="Gray" ManipulationMode="System">
+        <Button Content="Get Weather" Click="Button_Click" HorizontalAlignment="Center" Margin="0,100" FontSize="18" FontWeight="SemiBold" Background="Moccasin" Foreground="Black" CornerRadius="2"></Button>
+        <Image Name="ResultImage" Width="200" Height="200" Margin="0,-10" />
+        <TextBlock Name="locationText" HorizontalAlignment="Center" FontWeight="Bold" FontSize="26" Foreground="LightBlue" Margin="0, 50, 0, 0"/>
+        <TextBlock Name="temperatureText" HorizontalAlignment="Center" FontWeight="Bold" FontSize="26" Foreground="LightBlue"/>
+        <TextBlock Foreground="LightSkyBlue" x:Name="degrees" HorizontalAlignment="Center" FontWeight="Bold" FontSize="32"/>
+        <TextBlock Name="skyStatus" HorizontalAlignment="Center" FontWeight="Bold" FontSize="26" Foreground="LightBlue"/>
     </StackPanel>
 </Page>
