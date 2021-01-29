@@ -38,10 +38,10 @@ namespace UWPWeather
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            //var position = await LocationManager.GetPosition();
+            var position = await LocationManager.GetPosition();
 
-            //Root myWeather = await OpenWeatherMapProxy.GetWeather(position.Coordinate.Latitude, position.Coordinate.Longitude);
-            Root myWeather = await OpenWeatherMapProxy.GetWeather(43.7315, -79.7624);
+            Root myWeather = await OpenWeatherMapProxy.GetWeather(position.Coordinate.Latitude, position.Coordinate.Longitude);
+            //Root myWeather = await OpenWeatherMapProxy.GetWeather(43.7315, -79.7624);
 
             CultureInfo cultureInfo = Thread.CurrentThread.CurrentCulture;
             TextInfo textInfo = cultureInfo.TextInfo;
